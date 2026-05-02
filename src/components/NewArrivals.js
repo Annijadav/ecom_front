@@ -48,8 +48,13 @@ export default function NewArrivals() {
 
   const getImageUrl = (product) => {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
-    const imageUrl = product?.image?.url;
+    let imageUrl = product?.image?.url;
     if (!baseUrl || !imageUrl) return FALLBACK_IMAGE;
+    
+    if (imageUrl.includes('res.cloudinary.com')) {
+      return 'https://' + imageUrl.substring(imageUrl.indexOf('res.cloudinary.com'));
+    }
+
     if (imageUrl.startsWith("http")) return imageUrl;
     return `${baseUrl}${imageUrl.startsWith("/") ? "" : "/"}${imageUrl}`;
   };

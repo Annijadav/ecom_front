@@ -66,7 +66,12 @@ export default function ProductCard({ sortOption }) {
         ? selectedColorIndex[product._id] ?? 0
         : 0;
 
-      const imgUrl = variant.images[imageIndex]?.url || variant.images.find((img) => img.isPrimary)?.url || variant.images[0].url;
+      let imgUrl = variant.images[imageIndex]?.url || variant.images.find((img) => img.isPrimary)?.url || variant.images[0].url;
+      
+      if (imgUrl && imgUrl.includes('res.cloudinary.com')) {
+        imgUrl = 'https://' + imgUrl.substring(imgUrl.indexOf('res.cloudinary.com'));
+      }
+
       const fullUrl = imgUrl.startsWith('http') ? imgUrl : `${baseURL}${imgUrl}`;
 
       if (isHovering[product._id] && imageIndex >= variant.images.length) {

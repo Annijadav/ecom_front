@@ -41,7 +41,12 @@ export default function FashionSlider() {
       return { url: FALLBACK_IMAGE, isVideo: false };
     }
 
-    const fullUrl = mediaUrl.startsWith("http") ? mediaUrl : `${process.env.NEXT_PUBLIC_API_URL}${mediaUrl}`;
+    let fullUrl = mediaUrl;
+    if (fullUrl && fullUrl.includes('res.cloudinary.com')) {
+      fullUrl = 'https://' + fullUrl.substring(fullUrl.indexOf('res.cloudinary.com'));
+    } else if (fullUrl) {
+      fullUrl = fullUrl.startsWith("http") ? fullUrl : `${process.env.NEXT_PUBLIC_API_URL}${fullUrl}`;
+    }
 
     return {
       url: fullUrl,

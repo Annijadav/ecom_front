@@ -21,6 +21,14 @@ import { volkhov } from "../../../lib/fonts";
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 const PLACEHOLDER_IMAGE = `${API_BASE_URL}/placeholder.jpg`;
 
+const getCleanMediaUrl = (url) => {
+  if (!url) return '';
+  if (url.includes('res.cloudinary.com')) {
+    return 'https://' + url.substring(url.indexOf('res.cloudinary.com'));
+  }
+  return url.startsWith("http") ? url : `${API_BASE_URL}${url}`;
+};
+
 export default function ProductPage() {
   const { id } = useParams();
   const { product, fetchProductById, loading, error } = useProductDetailStore();
@@ -254,7 +262,7 @@ export default function ProductPage() {
                   {item.type === "video" ? (
                     <>
                       <video
-                        src={item.url.startsWith("http") ? item.url : `${API_BASE_URL}${item.url}`}
+                        src={getCleanMediaUrl(item.url)}
                         className="w-full h-full object-cover"
                         muted
                         autoPlay
@@ -266,7 +274,7 @@ export default function ProductPage() {
                     </>
                   ) : (
                     <img
-                      src={item.url.startsWith("http") ? item.url : `${API_BASE_URL}${item.url}`}
+                      src={getCleanMediaUrl(item.url)}
                       alt={item.alt || `Thumbnail ${index}`}
                       className="w-full h-full object-cover"
                       onError={() => console.error("Image load failed:", item.url)}
@@ -281,7 +289,7 @@ export default function ProductPage() {
                   <>
                     {mediaItems[currentMedia].type === "video" ? (
                       <video
-                        src={mediaItems[currentMedia].url.startsWith("http") ? mediaItems[currentMedia].url : `${API_BASE_URL}${mediaItems[currentMedia].url}`}
+                        src={getCleanMediaUrl(mediaItems[currentMedia].url)}
                         className="w-full h-full object-contain rounded"
                         controls
                         autoPlay
@@ -290,7 +298,7 @@ export default function ProductPage() {
                       />
                     ) : (
                       <img
-                        src={mediaItems[currentMedia].url.startsWith("http") ? mediaItems[currentMedia].url : `${API_BASE_URL}${mediaItems[currentMedia].url}`}
+                        src={getCleanMediaUrl(mediaItems[currentMedia].url)}
                         alt={mediaItems[currentMedia].alt || product.name}
                         className="w-full h-full object-fit object-contain rounded"
                       />
@@ -310,7 +318,7 @@ export default function ProductPage() {
                     {item.type === "video" ? (
                       <>
                         <video
-                          src={item.url.startsWith("http") ? item.url : `${API_BASE_URL}${item.url}`}
+                          src={getCleanMediaUrl(item.url)}
                           className="w-full h-full object-center"
                           muted
                           autoPlay
@@ -323,7 +331,7 @@ export default function ProductPage() {
                       </>
                     ) : (
                       <img
-                        src={item.url.startsWith("http") ? item.url : `${API_BASE_URL}${item.url}`}
+                        src={getCleanMediaUrl(item.url)}
                         alt={item.alt || `View ${index}`}
                         className="w-full h-full object-center"
                       />
