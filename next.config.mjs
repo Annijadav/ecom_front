@@ -2,8 +2,7 @@
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
-    images: {
+  images: {
     unoptimized: true,
   },
   // experimental: {
