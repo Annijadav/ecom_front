@@ -50,13 +50,8 @@ export default function NewArrivals() {
     const baseUrl = process.env.NEXT_PUBLIC_API_URL;
     const imageUrl = product?.image?.url;
     if (!baseUrl || !imageUrl) return FALLBACK_IMAGE;
-    try {
-      const fullUrl = new URL(`${imageUrl}`);
-      return fullUrl.toString();
-    } catch (e) {
-      console.error("Invalid URL:", `${baseUrl}${imageUrl}`, e);
-      return FALLBACK_IMAGE;
-    }
+    if (imageUrl.startsWith("http")) return imageUrl;
+    return `${baseUrl}${imageUrl.startsWith("/") ? "" : "/"}${imageUrl}`;
   };
 
   const safeProducts = Array.isArray(products) ? products : [];

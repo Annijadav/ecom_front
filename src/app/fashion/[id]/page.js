@@ -254,7 +254,7 @@ export default function ProductPage() {
                   {item.type === "video" ? (
                     <>
                       <video
-                        src={`${API_BASE_URL}${item.url}`}
+                        src={item.url.startsWith("http") ? item.url : `${API_BASE_URL}${item.url}`}
                         className="w-full h-full object-cover"
                         muted
                         autoPlay
@@ -266,7 +266,7 @@ export default function ProductPage() {
                     </>
                   ) : (
                     <img
-                      src={`${API_BASE_URL}${item.url}`}
+                      src={item.url.startsWith("http") ? item.url : `${API_BASE_URL}${item.url}`}
                       alt={item.alt || `Thumbnail ${index}`}
                       className="w-full h-full object-cover"
                       onError={() => console.error("Image load failed:", item.url)}
@@ -281,7 +281,7 @@ export default function ProductPage() {
                   <>
                     {mediaItems[currentMedia].type === "video" ? (
                       <video
-                        src={`${API_BASE_URL}${mediaItems[currentMedia].url}`}
+                        src={mediaItems[currentMedia].url.startsWith("http") ? mediaItems[currentMedia].url : `${API_BASE_URL}${mediaItems[currentMedia].url}`}
                         className="w-full h-full object-contain rounded"
                         controls
                         autoPlay
@@ -290,7 +290,7 @@ export default function ProductPage() {
                       />
                     ) : (
                       <img
-                        src={`${API_BASE_URL}${mediaItems[currentMedia].url}`}
+                        src={mediaItems[currentMedia].url.startsWith("http") ? mediaItems[currentMedia].url : `${API_BASE_URL}${mediaItems[currentMedia].url}`}
                         alt={mediaItems[currentMedia].alt || product.name}
                         className="w-full h-full object-fit object-contain rounded"
                       />
@@ -310,7 +310,7 @@ export default function ProductPage() {
                     {item.type === "video" ? (
                       <>
                         <video
-                          src={`${API_BASE_URL}${item.url}`}
+                          src={item.url.startsWith("http") ? item.url : `${API_BASE_URL}${item.url}`}
                           className="w-full h-full object-center"
                           muted
                           autoPlay
@@ -323,7 +323,7 @@ export default function ProductPage() {
                       </>
                     ) : (
                       <img
-                        src={`${API_BASE_URL}${item.url}`}
+                        src={item.url.startsWith("http") ? item.url : `${API_BASE_URL}${item.url}`}
                         alt={item.alt || `View ${index}`}
                         className="w-full h-full object-center"
                       />

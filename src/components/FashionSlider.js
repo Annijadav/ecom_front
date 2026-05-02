@@ -41,7 +41,7 @@ export default function FashionSlider() {
       return { url: FALLBACK_IMAGE, isVideo: false };
     }
 
-    const fullUrl = `${process.env.NEXT_PUBLIC_API_URL}${mediaUrl}`;
+    const fullUrl = mediaUrl.startsWith("http") ? mediaUrl : `${process.env.NEXT_PUBLIC_API_URL}${mediaUrl}`;
 
     return {
       url: fullUrl,
