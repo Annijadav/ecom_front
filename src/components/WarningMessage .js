@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { CiCircleInfo, CiWarning } from "react-icons/ci";
 
 const WarningMessage = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   if (!visible) return null;
 
