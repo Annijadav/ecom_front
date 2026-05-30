@@ -21,7 +21,7 @@ export default function Navbar() {
         <div className="flex-shrink-0">
           <Link href="/" className="block">
             <Image
-              src="/PHOTO-2025-08-11-15-28-29 (1).jpg"
+              src="/ethniz_couture.jpg"
               width={109}
               height={105}
               alt="Logo"
@@ -89,9 +89,8 @@ export default function Navbar() {
 
       {/* Mobile Nav */}
       <div
-        className={`transition-all duration-300 ease-in-out overflow-hidden md:hidden bg-white w-full absolute top-[105.12px] z-50 ${
-          isOpen ? "max-h-[300px]" : "max-h-0"
-        }`}
+        className={`transition-all duration-300 ease-in-out overflow-hidden md:hidden bg-white w-full absolute top-[105.12px] z-50 ${isOpen ? "max-h-[300px]" : "max-h-0"
+          }`}
       >
         <ul className="flex flex-col text-sm font-medium px-4 max-w-[1277px] mx-auto">
           {["/", "/fashion"].map((href, idx) => {

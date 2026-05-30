@@ -1,7 +1,7 @@
 // components/WarningMessage.js
 "use client";
 import React, { useState } from "react";
-import { CiCircleInfo,CiWarning } from "react-icons/ci";
+import { CiCircleInfo, CiWarning } from "react-icons/ci";
 
 const WarningMessage = () => {
   const [visible, setVisible] = useState(true);
@@ -17,13 +17,13 @@ const WarningMessage = () => {
         </div>
 
         {/* Warning Text */}
-       <div className="flex items-center gap-2  p-2 rounded">
- 
-  <p className="text-sm font-medium leading-relaxed">
-    <span className="font-bold ">⚠️ WARNING:</span> Scamsters are falsely claiming to represent 
-    <span className="font-bold"> Misha Brands Factory</span>. Do NOT respond to unknown calls. Verify with us only on our official contact number before any business.
-  </p>
-</div>
+        <div className="flex items-center gap-2  p-2 rounded">
+
+          <p className="text-sm font-medium leading-relaxed">
+            <span className="font-bold ">⚠️ WARNING:</span> Scamsters are falsely claiming to represent
+            <span className="font-bold"> Ethniz Courture</span>. Do NOT respond to unknown calls. Verify with us only on our official contact number before any business.
+          </p>
+        </div>
 
         {/* Close Button */}
         <button

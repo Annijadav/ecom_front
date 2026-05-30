@@ -7,7 +7,7 @@ export default function Footer() {
   const [year, setYear] = useState(null);
 
   useEffect(() => {
-    if(!year){
+    if (!year) {
       setYear(new Date().getFullYear());
     }
   }, []);
@@ -19,7 +19,7 @@ export default function Footer() {
         <div className="mb-4 md:mb-0">
           <Link href="/">
             <Image
-              src="/PHOTO-2025-08-11-15-28-29 (1).jpg"
+              src="/ethniz_couture.jpg"
               width={109}
               height={105}
               alt="Logo"
@@ -34,7 +34,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <p className="text-sm text-center md:text-left">
-          Copyright © {year ?? ""} Misha brands factory. All Rights Reserved.
+          Copyright © {year ?? ""} Ethniz Courture. All Rights Reserved.
         </p>
       </div>
     </footer>
